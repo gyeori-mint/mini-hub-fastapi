@@ -1,5 +1,4 @@
-from sqlalchemy import Column, DateTime, DATE, INTEGER, BIGINT, \
-    VARCHAR, FLOAT, CHAR, ForeignKey, JSON, BOOLEAN, ARRAY
+from sqlalchemy import Column, DateTime, DATE, INTEGER, VARCHAR, FLOAT, ForeignKey, JSON
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.sql import func
 from database import Base
@@ -9,6 +8,21 @@ class Project(Base):
     __tablename__ = 'project'
     id = Column(UUID(as_uuid=True), primary_key=True, server_default=func.gen_random_uuid())
     name = Column(VARCHAR)
+
+
+class Service(Base):
+    __tablename__ = 'service'
+    id = Column(UUID(as_uuid=True), primary_key=True, server_default=func.gen_random_uuid())
+
+
+class ServiceConnection(Base):
+    __tablename__ = 'service_connection'
+    id = Column(UUID(as_uuid=True), primary_key=True, server_default=func.gen_random_uuid())
+
+
+class DataConnection(Base):
+    __tablename__ = 'data_connection'
+    id = Column(UUID(as_uuid=True), primary_key=True, server_default=func.gen_random_uuid())
 
 
 # Media
